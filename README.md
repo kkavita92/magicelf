@@ -1,6 +1,6 @@
 # Secret Santa Generator
 
-Inspired by [this secret santa mailer](https://github.com/deniseyu/secret-santa-mailer)
+Inspired by [this secret santa mailer].(https://github.com/deniseyu/secret-santa-mailer)
 
 ```
 
@@ -42,7 +42,7 @@ If you said **YES** to all of the above, then **Magic Elf** is just what you nee
 
 1. Update ```participants.yml``` with the names and emails of your Secret Santa participants. You can exclude giftees from receiving specific people by adding their names to the giftees' exclusion list.
 
-2. In the [run file](run.rb), replace the Gmail username and password with your own details.
+2. In the [run file](run.rb), replace the Gmail username and password with your own details. You might also have to turn on access for less secure apps for your account [here](https://myaccount.google.com/lesssecureapps).
 
 3. Run the following in your terminal:
 ```
@@ -55,3 +55,9 @@ ruby run.rb
 bundle install
 SAVE_OUTPUT=true ruby run.rb
 ```
+
+
+## Pending Updates
+* Enabling Magic Elf to work with Gmail XOAuth.
+* Implement belated RSpec tests - I've been bad I know.
+* Jazz up the email body with Rainbow gem. 
