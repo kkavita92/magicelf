@@ -1,8 +1,5 @@
 require 'yaml'
 
-yaml_file = "../participants.yml"
-list = YAML.load_file(yaml_file)
-
 class SecretSantaAssigner
   attr_reader :assignments
 
@@ -21,22 +18,14 @@ class SecretSantaAssigner
     end
   end
 
-  def valid_allocation?(assignee, person)
-    if person[:exclusions]
-      assignee != person && !(person[:exclusions].include?(assignee[:name]))
-    else
-      assignee != person
-    end
-  end
-
   def shuffle
     @giftees.shuffle!
   end
 
+  private
+
+  def valid_allocation?(assignee, person)
+    person[:exclusions] ? assignee != person && !(person[:exclusions].include?(assignee[:name])) : assignee != person
+  end
+
 end
-
-game =  SecretSantaAssigner.new(list)
-game.shuffle
-game.allocate_santas
-
-p game.assignments
