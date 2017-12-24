@@ -1,13 +1,14 @@
 -
   :name: Daniel
   :email: daniel@yahoo.com
-  :exclusions: Parvati, Henry
+  :exclusions: [Parvati, Henry, Maria]
 -
   :name: Henry
   :email: henry@yahoo.com
 -
   :name: Parvati
   :email: parvati@yahoo.com
+  :exclusions: [Sylvia]
 -
   :name: Maria
   :email: maria@coolkid.com

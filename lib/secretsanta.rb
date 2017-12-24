@@ -1,9 +1,5 @@
 require 'yaml'
 
-# file_path = File.expand_path("../../participants.txt", __FILE__)
-# input = File.read(file_path).split("\n")
-# list = input.map { |participant_details| participant_details.split(",").map(&:strip) }
-
 yaml_file = "../participants.yml"
 list = YAML.load_file(yaml_file)
 
@@ -11,20 +7,30 @@ class SecretSantaAssigner
   attr_reader :assignments
 
   def initialize(list)
-    @list = list.dup
+    @giftees = list.dup
+    @gifters = list.dup
     @assignments = {}
   end
 
   def allocate_santas
-    @list.each do |name|
+    @gifters.each do |name|
       secret_santa = name #bit hacky
-      secret_santa = @list.sample until secret_santa != name
+      secret_santa = @giftees.sample until valid_allocation?(secret_santa, name)
       @assignments[name] = secret_santa
+      @giftees.delete(secret_santa)
+    end
+  end
+
+  def valid_allocation?(assignee, person)
+    if person[:exclusions]
+      assignee != person && !(person[:exclusions].include?(assignee[:name]))
+    else
+      assignee != person
     end
   end
 
   def shuffle
-    @list.shuffle!
+    @giftees.shuffle!
   end
 
 end
