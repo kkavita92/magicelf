@@ -8,4 +8,5 @@ game =  SecretSantaAssigner.new(list)
 game.shuffle
 game.allocate_santas
 
-p game.assignments
+mailer = SantaMailer.new(game.assignments)
+mailer.send

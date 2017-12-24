@@ -1,4 +1,31 @@
 require 'yaml'
+require 'mail'
+require 'gmail'
+
+class SantaMailer
+
+  def initialize(assignments, host_username = 'your_username', host_password = 'your_password')
+    @assignments = assignments
+    @gmail = Gmail.connect(host_username, host_password)
+  end
+
+  def send
+    @assignments.each do |gifter, giftee|
+      mail_to(gifter, giftee)
+    end
+  end
+
+  def mail_to(gifter, giftee)
+    @gmail.deliver do
+      to      gifter[:email]
+      subject '🎁 Secret Santa 2k18 🎁'
+      text_part do
+        body    "You are buying a gift for: \n\n🎄 #{ giftee[:name].upcase } 🎄"
+      end
+    end
+  end
+
+end
 
 class SecretSantaAssigner
   attr_reader :assignments
@@ -11,7 +38,7 @@ class SecretSantaAssigner
 
   def allocate_santas
     @gifters.each do |name|
-      secret_santa = name #bit hacky
+      secret_santa = name
       secret_santa = @giftees.sample until valid_allocation?(secret_santa, name)
       @assignments[name] = secret_santa
       @giftees.delete(secret_santa)
