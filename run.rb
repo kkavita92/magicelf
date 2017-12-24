@@ -13,15 +13,15 @@ SAVE_OUTPUT = ENV['SAVE_OUTPUT']
 yaml_file = "participants.yml"
 list = YAML.load_file(yaml_file)
 
-game =  SecretSantaAssigner.new(list)
-game.shuffle
-game.allocate_santas
+assigner =  SecretSantaAssigner.new(list)
+assigner.shuffle
+assigner.allocate_santas
 
 if SAVE_OUTPUT
   f = File.new('./masterlist', 'w')
-  game.assignments.each {|gifter, giftee| f.write("#{gifter[:name]} -> #{giftee[:name]}\n") }
+  assigner.assignments.each {|gifter, giftee| f.write("#{gifter[:name]} -> #{giftee[:name]}\n") }
   f.close
 end
 
-mailer = SantaMailer.new(game.assignments, gmail_username, gmail_password)
+mailer = SantaMailer.new(assigner.assignments, gmail_username, gmail_password)
 mailer.send

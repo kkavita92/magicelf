@@ -37,6 +37,7 @@ Organising a Christmas party 🤶? Need a **randomised Secret Santa Generator** 
 
 If you said **YES** to all of the above, then **Magic Elf** is just what you need.
 
+PS: Currently, Magic Elf is only hooked up to Gmail. Long live Gmail.
 
 ## How To Use
 
@@ -64,3 +65,4 @@ SAVE_OUTPUT=true ruby run.rb
 * Enabling Magic Elf to work with Gmail XOAuth.
 * Implement belated RSpec tests - I've been bad I know.
 * Jazz up the email body with Rainbow gem.
+* Refactor party (pizza optional).
