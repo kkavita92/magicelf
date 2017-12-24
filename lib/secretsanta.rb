@@ -1,10 +1,14 @@
-file_path = File.expand_path("../../participants.txt", __FILE__)
-list = File.read(file_path).split("\n")
+require 'yaml'
+
+# file_path = File.expand_path("../../participants.txt", __FILE__)
+# input = File.read(file_path).split("\n")
+# list = input.map { |participant_details| participant_details.split(",").map(&:strip) }
+
+yaml_file = "../participants.yml"
+list = YAML.load_file(yaml_file)
 
 class SecretSantaAssigner
-
   attr_reader :assignments
-
 
   def initialize(list)
     @list = list.dup
