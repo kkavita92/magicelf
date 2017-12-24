@@ -3,7 +3,7 @@ require 'gmail'
 
 class SantaMailer
 
-  def initialize(assignments, host_username = 'your_username', host_password = 'your_password')
+  def initialize(assignments, host_username, host_password)
     @assignments = assignments
     @gmail = Gmail.connect(host_username, host_password)
   end
