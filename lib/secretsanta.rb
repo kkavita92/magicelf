@@ -1,5 +1,4 @@
 require 'yaml'
-require 'mail'
 require 'gmail'
 
 class SantaMailer

@@ -4,14 +4,14 @@
   :exclusions: [Parvati, Henry, Maria]
 -
   :name: Henry
-  :email: kkavita@gmail.com
+  :email: henry@example.com
 -
   :name: Parvati
-  :email: kkavita@gmail.com
+  :email: parvati@example.com
   :exclusions: [Sylvia]
 -
   :name: Maria
-  :email: kkavita@gmail.com
+  :email: maria@example.com
 -
   :name: Sylvia
-  :email: kkavita@gmail.com
+  :email: sylvia@example.com
